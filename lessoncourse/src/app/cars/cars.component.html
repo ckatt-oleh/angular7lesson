@@ -14,3 +14,30 @@
     <b>{{idx + 1}}</b> - <i>{{item.name}}</i>
   </li>
 </ul>
+
+<ul>
+  <li *ngFor="let car of cars; let idx = index">
+      <div 
+        [ngStyle]="{'backgroundColor': (idx + 1)% 2 ===0 ? 'red':'green', 'color': 'white'}"
+        [ngClass]="{'big-text': setBigCarText(car)}"
+        >
+        <b>{{idx + 1}}</b> - {{car}}
+      </div>
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor="let date of dates; let idx = index">
+    <div>
+        <b>{{idx + 1}}</b> - {{date | date:'medium'}}
+    </div>
+  </li>
+</ul>
+
+<ul>
+    <li *ngFor="let date of dates; let idx = index">
+      <div>
+          <b>{{idx + 1}}</b> - {{date | uppercase}}
+      </div>
+    </li>
+  </ul>
