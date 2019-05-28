@@ -8,13 +8,14 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 export class AddCarComponent implements OnInit {
   carName = '';
   carYear = 2017;
-  @Output() onAddCar = new EventEmitter<{name: string, year: number}>();
+  @Output('onAddCar') carEmitter = new EventEmitter<{name: string, year: number}>();
 
   addCar(){
-    this.onAddCar.emit({
+    this.carEmitter.emit({
       name: this.carName,
       year: this.carYear});
     this.carName = '';
+    this.carYear = 2017;
   }
 
   constructor() { }
