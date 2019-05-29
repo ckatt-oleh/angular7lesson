@@ -11,13 +11,15 @@ export class CarsComponent {
   cars: { name: string, year: number }[] = [{
     name: 'Ford',
     year: 2016
-  },{
-    name: 'Mazda',
-    year: 2016
-  },{
-    name: 'Audi',
-    year: 2016
-  }];
+  },
+  // {
+  //   name: 'Mazda',
+  //   year: 2016
+  // },{
+  //   name: 'Audi',
+  //   year: 2016
+  // }
+];
   items = [{id: 3, name: 'item 1'}, {id: 6, name: 'item 2'}, {id: 9, name: 'item 3'}];
   dates = [
     new Date(2015, 3, 4).toDateString(),
@@ -31,5 +33,13 @@ export class CarsComponent {
 
   updateCarList(car: {name: string, year: number}){
     this.cars.push(car);
+  }
+
+  changeCarName(){
+    this.cars[0].name = 'New car name';
+  }
+
+  deleteCar(){
+    this.cars.splice(0,1);
   }
 }
