@@ -10,11 +10,13 @@ import { AddCarComponent } from './add-car/add-car.component';
 import { BackgroundDirective } from './directives/beckground.directive';
 import { MyDirectiveDirective } from './directives/my-directive.directive';
 import { PowPipe } from './pow.pipe';
+import { CarFilterPipe } from './car-filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PowPipe
+    PowPipe,
+    CarFilterPipe
     // BackgroundDirective,
     // MyDirectiveDirective
     // CarsComponent,
