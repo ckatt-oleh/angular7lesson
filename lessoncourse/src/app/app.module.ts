@@ -13,8 +13,8 @@ import { MyDirectiveDirective } from './directives/my-directive.directive';
 @NgModule({
   declarations: [
     AppComponent,
-    BackgroundDirective,
-    MyDirectiveDirective
+    // BackgroundDirective,
+    // MyDirectiveDirective
     // CarsComponent,
     // CarComponent,
     // AddCarComponent
