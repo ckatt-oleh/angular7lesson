@@ -1,63 +1,31 @@
-import { Component, 
-  Input, 
-  ElementRef, 
-  ContentChild, 
-  OnInit, 
-  OnChanges, 
-  SimpleChanges, 
-  DoCheck,
-  AfterContentInit,
-  AfterContentChecked,
-  AfterViewChecked,
-  AfterViewInit,
-  OnDestroy} from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ConsoleService } from '../console.service';
 
 @Component({
   selector: 'app-car',
   templateUrl: './car.component.html',
-  styleUrls: ['./car.component.css']
+  styleUrls: ['./car.component.css'],
+  providers: [ConsoleService]
 })
-export class CarComponent implements 
-  OnInit, 
-  OnChanges,
-  DoCheck,
-  AfterContentInit,
-  AfterContentChecked,
-  AfterViewInit,
-  AfterViewChecked,
-  OnDestroy
-  {
-  @Input('carItem') car: {name: string, year: number};
-  @Input() name: string;
-  @ContentChild('carHeading') carHeading: ElementRef;
+export class CarComponent {
 
-  constructor() {
-    console.log('constructor');
+  @Input() car;
+
+  getClass(){
+    return {
+      'list-group-item-success': !this.car.isSold,
+      'list-group-item-danger': this.car.isSold,
+      'list-group-item': true
+    }
   }
 
-  ngOnInit() {
-    console.log('ngOnInit');
+  onAction(type: string){
+    this.car.isSold = type === 'buy' ? true : false;
+    this.consoleService.log(`${this.car.name} status ${type}`);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    console.log('ngOnChanges', changes);
-  }
-  ngDoCheck(){
-    console.log('ngDoCheck');
-  }
-  ngAfterContentInit(){
-    console.log('ngAfterContentInit');
-  }
-  ngAfterContentChecked(){
-    console.log('ngAfterContentChecked');
-  }
-  ngAfterViewInit(){
-    console.log('ngAfterViewInit');
-  }
-  ngAfterViewChecked(){
-    console.log('ngAfterViewChecked');
-  }
-  ngOnDestroy(){
-    console.log('ngOnDestroy');
-  }
+  constructor(private consoleService: ConsoleService) { 
+    
+   }
+
 }

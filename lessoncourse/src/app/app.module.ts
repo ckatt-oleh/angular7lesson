@@ -4,24 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CarsComponent } from './cars/cars.component';
 import { CarComponent } from './car/car.component';
-import { AddCarComponent } from './add-car/add-car.component';
-import { BackgroundDirective } from './directives/beckground.directive';
-import { MyDirectiveDirective } from './directives/my-directive.directive';
-import { PowPipe } from './pow.pipe';
-import { CarFilterPipe } from './car-filter.pipe';
-
+import { CarAddComponent } from './car-add/car-add.component';
 @NgModule({
   declarations: [
     AppComponent,
-    PowPipe,
-    CarFilterPipe
-    // BackgroundDirective,
-    // MyDirectiveDirective
-    // CarsComponent,
-    // CarComponent,
-    // AddCarComponent
+    CarComponent,
+    CarAddComponent,
   ],
   imports: [
     BrowserModule,

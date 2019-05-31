@@ -4,53 +4,27 @@ import { delay } from "rxjs/operators";
 
 @Component({
   selector: 'app-root',
-  template: `
-  <div class="col-xs-8 col-xs-offset-2">
-    <h1>{{asyncTitle | async}}</h1>
-    <input type="text" class="form-control" [(ngModel)]="searchCar">
-    <button class="btn btn-primary" (click)="addCar()">Добавить</button>
-    <hr>
-    <ul class="list-group">
-      <li 
-        class="list-group-item"
-        *ngFor="let car of cars | carFilter:searchCar:'name'; let i = index">
-        <b>{{i + 1}}</b> {{car.name}} <i>{{car.descr}}</i>
-      </li>   
-    </ul>
-  </div>`
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
-  searchCar='';
   cars = [
-    {name: 'Ford',
-    descr: 'WFM 1'},
-    {name: 'Mazda',
-    descr: 'WFM 2'},
-    {name: 'Bently',
-    descr: 'WFM 3'},
-    {name: 'Audi',
-    descr: 'WFM 4'},
-    {name: 'Mercedes',
-    descr: 'WFM 5'},
-    {name: 'BMW',
-    descr: 'WFM 6'}
+    {
+      name: 'Ford',
+      isSold: false
+    },
+    {
+      name: 'Mazda',
+      isSold: true
+    },
+    {
+      name: 'Mercedes',
+      isSold: false
+    },
   ];
-
-  // title = '';
-
-  // asyncTitle = of('Async title 3seconds')
-  //   .pipe(delay(3000))
-  //   .subscribe((str) => this.title = str);
-
-  asyncTitle = of('Async title 3seconds')
-    .pipe(delay(3000));
-  
-  
-
-  addCar(){
+  addCarToList(carName: string){
     this.cars.push({
-      name: 'New car',
-      descr: 'WFM'
-    })
+      name: carName,
+      isSold: false
+    });
   }
 }
