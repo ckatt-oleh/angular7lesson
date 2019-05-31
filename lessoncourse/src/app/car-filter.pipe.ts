@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'carFilter',
-  pure: false     // по умолчанию true
+  pure: true     // по умолчанию true(если false для динамического обновления после добавления списка)
 })
 export class CarFilterPipe implements PipeTransform {
 
