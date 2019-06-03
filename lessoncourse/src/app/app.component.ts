@@ -1,30 +1,19 @@
-import { Component } from '@angular/core';
-import { of } from "rxjs";
-import { delay } from "rxjs/operators";
+import { Component, OnInit } from '@angular/core';
+import { CarService } from "./car.service";
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  providers: [CarService]
 })
-export class AppComponent {
-  cars = [
-    {
-      name: 'Ford',
-      isSold: false
-    },
-    {
-      name: 'Mazda',
-      isSold: true
-    },
-    {
-      name: 'Mercedes',
-      isSold: false
-    },
-  ];
-  addCarToList(carName: string){
-    this.cars.push({
-      name: carName,
-      isSold: false
-    });
+export class AppComponent implements OnInit {
+
+  cars = [];
+
+  constructor(private service: CarService){
+
+  }
+  ngOnInit(){
+    this.cars = this.service.cars;
   }
 }
