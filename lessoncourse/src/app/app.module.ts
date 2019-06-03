@@ -6,7 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarComponent } from './car/car.component';
 import { CarAddComponent } from './car-add/car-add.component';
-import { CarService } from './car.service';
+import { ConsoleService } from './console.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,7 @@ import { CarService } from './car.service';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ConsoleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
