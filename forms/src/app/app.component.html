@@ -28,7 +28,7 @@
       <label>Выберите страну</label>
       <select 
         class="form-control"
-        ngModel
+        [ngModel]="defaultCountry"
         name="country"
         required>
         <option value="ua">Україна</option>
@@ -44,7 +44,7 @@
           required
           type="radio" 
           [value]="ans.type"
-          ngModel
+          [ngModel]="defaultAnswer"
           name="answer">{{ans.text}}
       </label>
     </div>
