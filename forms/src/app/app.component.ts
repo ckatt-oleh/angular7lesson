@@ -9,7 +9,9 @@ import { NgForm } from '@angular/forms';
     border: 1px solid red;
   }`]
 })
-export class AppComponent { 
+export class AppComponent {
+  
+  @ViewChild('form') form: NgForm;
 
   answers = [{
     type: 'yes',
@@ -20,9 +22,32 @@ export class AppComponent {
   }];
 
   defaultAnswer = 'yes';
-  defaultCountry = 'uk'
+  defaultCountry = 'uk';
 
-  submitForm(form: NgForm) {
-    console.log("Submited", form);
+  addRandEmail(){
+    const randEmail = "sfgrsg@sgr.com";
+    // this.form.setValue({
+    //   user: {
+    //     pass: '',
+    //     email: randEmail
+    //   },
+    //   country: '',
+    //   answer: '' 
+    // });
+    this.form.form.patchValue({
+      user: { 
+        email: randEmail
+       }
+    });
+  }
+
+  formData = {};
+  isSubmited = false;
+
+  submitForm() {
+    this.isSubmited = true;
+    this.formData = this.form.value;
+    this.form.reset();
+    console.log("Submited", this.form);
   }
 }
