@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   ngOnInit(){
     this.form = new FormGroup({
       user: new FormGroup({
-        email: new FormControl('', [Validators.required, Validators.email]),
+        email: new FormControl('', [Validators.required, Validators.email], [this.checkForEmail]),
         pass: new FormControl('', [Validators.required, this.checkForLength.bind(this)])
       }),
       country: new FormControl('slv'),
@@ -42,5 +42,19 @@ export class AppComponent implements OnInit {
       };
     }
     return null;
+  }
+
+  checkForEmail(control: FormControl): Promise<any> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() =>{
+        if(control.value === 'ckatt.oleg@gmail.com'){
+          resolve({
+            'emailIsUsed': true
+          });
+        } else {
+          resolve(null);
+        }
+      }, 3000);
+    })
   }
 }
