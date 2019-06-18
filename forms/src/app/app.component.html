@@ -1,24 +1,26 @@
 <div class="col-xs-8 col-xs-offset-2">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div class="form-group">
+    <div class="form-group" [ngClass]="{'has-error': form.get('email').invalid && form.get('email').touched}">
       <label>Email</label>
       <input 
         type="text" 
         class="form-control"
-        formConrolName="email">
+        formControlName="email">
+        <p *ngIf="form.get('email').invalid && form.get('email').touched">Введите коректный email</p>
     </div>
-    <div class="form-group">
+    <div class="form-group" [ngClass]="{'has-error': form.get('pass').invalid && form.get('pass').touched}">
       <label>Password</label>
       <input 
         type="password" 
         class="form-control"
-        formConrolName="pass">
+        formControlName="pass">
+        <p *ngIf="form.get('pass').invalid && form.get('pass').touched">Пароль не должен быть пустым</p>
     </div>
     <div class="form-group">
       <label>Выберите страну</label>
       <select 
         class="form-control"
-        formConrolName="country">
+        formControlName="country">
         <option value="ua">Україна</option>
         <option value="slv">Словенія</option>
         <option value="uk">Британия</option>
@@ -29,10 +31,13 @@
         <input 
           type="radio" 
           [value]="ans.type"
-          formConrolName="answer"
+          formControlName="answer"
           name="answer">{{ans.text}}
       </label>
     </div>
-    <button class="btn btn-success" type="submit">Сохранить</button>
+    <button 
+      class="btn btn-success" 
+      type="submit"
+      [disabled]="form.invalid">Сохранить</button>
   </form>
 </div>

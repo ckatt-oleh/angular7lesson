@@ -1,9 +1,10 @@
 import { Component, OnInit} from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit {
 
@@ -19,10 +20,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(){
     this.form = new FormGroup({
-      email: new FormControl(''),
-      pass: new FormControl(''),
-      country: new FormControl('ua'),
-      answer: new FormControl('no')
+      email: new FormControl('', [Validators.required, Validators.email]),
+      pass: new FormControl('', Validators.required),
+      country: new FormControl('slv'),
+      answer: new FormControl('yes')
     });
   }
 
