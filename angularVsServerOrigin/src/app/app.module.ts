@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CarService } from '../app/cars.service'
-import { HttpModule } from '@angular/http'
+import { CarService } from '../app/cars.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,7 @@ import { HttpModule } from '@angular/http'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpModule
+    HttpClientModule
   ],
   providers: [CarService],
   bootstrap: [AppComponent]
