@@ -10,7 +10,11 @@
   <hr>
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let car of cars">
-      <span class="badge">{{car.id}}</span>{{car.name}} ({{car.color}})
+      <label class="badge badge-secondary" [ngStyle]="{background: car.color}">
+        {{car.id}}
+      </label>
+      {{car.name}}
+      <button class="btn btn-xs btn-info" (click)="setNewColor(car)">Изменить цвет</button>
     </li>
   </ul>
 </div>
