@@ -26,4 +26,10 @@ export class CarService {
         return this.http.put(`http://localhost:3000/cars/${car.id}`, car)
             .pipe(map(cars => { return cars}));
     }
+
+    deleteCarFromDB(car: any) {
+        return this.http.delete(`http://localhost:3000/cars/${car.id}`)
+            .pipe(map(cars => { return cars}));
+    }
+
 }
