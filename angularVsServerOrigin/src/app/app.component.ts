@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CarService } from './cars.service';
 
 @Component({
@@ -6,15 +6,15 @@ import { CarService } from './cars.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
   constructor(private carsService: CarService){}
 
-  ngOnInit(): void {
+  loadCars() {
     this.carsService
       .getCars()
       .subscribe((response) => {
-        console.log(response)
+        console.log(response);
       });
   }
 
