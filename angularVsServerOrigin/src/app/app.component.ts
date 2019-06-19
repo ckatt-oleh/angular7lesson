@@ -13,6 +13,9 @@ interface Cars {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  cars: Cars[] = [];
+  carName: string = '';
+  carColor: string = '';
 
   constructor(private carsService: CarService){}
 
@@ -24,5 +27,13 @@ export class AppComponent {
       });
   }
 
-  cars = [];
+  addCar() {
+    this.carsService
+      .addCar(this.carName, this.carColor)
+      .subscribe((car: Cars) => {
+        this.cars.push(car);
+      });
+    this.carName = '';
+    this.carColor = '';
+  }
 }
